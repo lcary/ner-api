@@ -7,7 +7,7 @@ from ner_api.serializers import serialize_prediction
 def predict_entities(query: RequestModel) -> List[Prediction]:
     nlp = MODELS[query.model]
     entities = []
-    texts = (article.text for article in query.articles)
+    texts = (example.text for example in query.examples)
     for doc in nlp.pipe(texts):
         entities.append(serialize_prediction(doc))
     return entities

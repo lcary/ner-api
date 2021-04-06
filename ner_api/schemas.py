@@ -5,22 +5,22 @@ import spacy
 from pydantic import BaseModel, Field
 
 
-class ModelName(str, Enum):
+class Model(str, Enum):
     en_core_web_sm = "en_core_web_sm"
 
 
-DEFAULT_MODEL = ModelName.en_core_web_sm
-MODEL_NAMES = [model.value for model in ModelName]
+DEFAULT_MODEL = Model.en_core_web_sm
+MODEL_NAMES = [model.value for model in Model]
 MODELS = {name: spacy.load(name) for name in MODEL_NAMES}
 
 
-class Article(BaseModel):
+class Example(BaseModel):
     text: str
 
 
 class RequestModel(BaseModel):
-    articles: List[Article]
-    model: ModelName = DEFAULT_MODEL
+    examples: List[Example]
+    model: Model = DEFAULT_MODEL
 
 
 class Entity(BaseModel):

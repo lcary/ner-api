@@ -1,6 +1,6 @@
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
 RUN apt-get update && apt-get install -yq cmake gcc-multilib g++-multilib curl
-COPY poetry.lock pyproject.toml ./
+COPY poetry.lock pyproject.toml poetry.toml ./
 RUN pip --no-cache-dir install poetry poetry-setup \
     && poetry install --no-root \
     && pip uninstall poetry -y \

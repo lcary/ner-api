@@ -1,0 +1,21 @@
+name: Python application
+
+on:
+  push:
+    branches: [$default-branch]
+  pull_request:
+    branches: [$default-branch]
+
+jobs:
+  build:
+    name: Build and test app
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build docker images
+        run: docker-compose build
+
+      - name: Run backend tests
+        run: docker-compose run backend make test

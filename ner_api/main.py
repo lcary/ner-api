@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from ner_api.predict import predict_entities
-from ner_api.schemas import MODEL_NAMES, RequestModel, ResponseModel
+from ner_api.schemas import MODEL_NAMES, PredictRequest, PredictResponse
 
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"])
@@ -18,12 +18,12 @@ def v1_models() -> List[str]:
 @app.post(
     "/v1/process/",
     summary="Process batches of text",
-    response_model=ResponseModel,
+    response_model=PredictResponse,
 )
-def v1_process(query: RequestModel) -> ResponseModel:
+def v1_process(query: PredictRequest) -> PredictResponse:
     """
     Process a batch of text requests and return the entities predicted by
     a given model.
     """
     entities = predict_entities(query)
-    return ResponseModel(result=entities)
+    return PredictResponse(result=entities)

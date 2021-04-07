@@ -9,8 +9,8 @@ COPY Makefile /app/
 COPY bin /app/bin/
 COPY ner_api /app/ner_api/
 WORKDIR /app/
-# Set the APP_MODULE environment variable used by the start.sh script here:
-# https://github.com/tiangolo/uvicorn-gunicorn-docker/blob/2daa3e3/docker-images/start.sh#L34
 RUN make download-assets
 RUN make install-model
+# Set the APP_MODULE environment variable used by the start.sh script here:
+# https://github.com/tiangolo/uvicorn-gunicorn-docker/blob/2daa3e3/docker-images/start.sh#L34
 ENV APP_MODULE=${APP_MODULE:-"ner_api.main:app"}

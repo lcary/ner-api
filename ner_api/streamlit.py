@@ -17,7 +17,7 @@ def read_jsonl(path: Path) -> Iterable[Any]:
         yield json.loads(line)
 
 
-def parse_options(path: Path) -> Dict[int, Dict[str, str]]:
+def parse_options(path: Path) -> Dict[str, Dict[str, str]]:
     """
     Returns a dict of documents with text data from a JSONL file.
     """
@@ -26,7 +26,8 @@ def parse_options(path: Path) -> Dict[int, Dict[str, str]]:
     for index, line in enumerate(lines):
         text = line["text"]
         source = line["meta"]["source"]
-        options[index] = {"text": text, "source": source}
+        key = f"{source}-{index}"
+        options[key] = {"text": text, "source": source}
     return options
 
 

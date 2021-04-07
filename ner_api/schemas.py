@@ -18,7 +18,7 @@ class Example(BaseModel):
     text: str
 
 
-class RequestModel(BaseModel):
+class PredictRequest(BaseModel):
     examples: List[Example]
     model: Model = DEFAULT_MODEL
 
@@ -35,5 +35,5 @@ class Prediction(BaseModel):
     entities: List[Entity] = Field(default_factory=list)
 
 
-class ResponseModel(BaseModel):
+class PredictResponse(BaseModel):
     result: List[Prediction]

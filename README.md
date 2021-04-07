@@ -10,7 +10,7 @@ To run the inference server REST API, run:
 docker-compose up
 ```
 
-Open your browser to http://localhost:80/docs for Swagger docs.
+Then, open your browser to http://localhost:80/docs for Swagger docs.
 
 ## Local Development
 

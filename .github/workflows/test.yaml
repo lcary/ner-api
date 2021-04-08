@@ -1,6 +1,6 @@
-name: Python application
+name: NER API demo application
 
-# Run this workflow every time a new commit pushed to your repository
+# Run this workflow every time a new commit is pushed to the repository
 on: push
 
 jobs:

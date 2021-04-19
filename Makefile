@@ -6,9 +6,8 @@ download-assets:
 	mkdir -p assets/
 	curl $(dataset_url) -o assets/data.jsonl
 
-model_version = 3.0.0
 install-model:
-	bash bin/install_model.sh 3.0.0
+	bash bin/install_model.sh
 
 server:
 	uvicorn ner_api.main:app --reload
